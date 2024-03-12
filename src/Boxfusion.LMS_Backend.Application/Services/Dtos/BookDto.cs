@@ -15,6 +15,7 @@ namespace Boxfusion.LMS_Backend.Services.Dtos
         public string Name { get; set; }
         public string Description { get; set; }
         public byte Type { get; set; }
+        public long Year { get; set; }
         public long CategoryId { get; set; }
     }
 }
