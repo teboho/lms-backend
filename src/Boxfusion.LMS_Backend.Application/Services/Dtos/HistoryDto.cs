@@ -1,4 +1,5 @@
-﻿using Abp.AutoMapper;
+﻿using Abp.Application.Services.Dto;
+using Abp.AutoMapper;
 using Abp.Domain.Entities;
 using Boxfusion.LMS_Backend.Domain;
 using System;
@@ -11,7 +12,7 @@ using System.Threading.Tasks;
 namespace Boxfusion.LMS_Backend.Services.Dtos
 {
     [AutoMap(typeof(History))]
-    public class HistoryDto : Entity<long>
+    public class HistoryDto : EntityDto<long>
     {
         public Guid PatronId { get; set; }
         public DateTime DateRead { get; set; }
