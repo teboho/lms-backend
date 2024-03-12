@@ -254,3 +254,4 @@ paket-files/
 src/Boxfusion.LMS_Backend.Web.Mvc/secrets.json
 src/Boxfusion.LMS_Backend.Web.Host/secrets.json
 src/Boxfusion.LMS_Backend.Migrator/secrets.json
+/src/Boxfusion.LMS_Backend.Web.Host/appsettings.json
