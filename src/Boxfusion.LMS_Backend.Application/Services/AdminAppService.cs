@@ -1,5 +1,6 @@
 ﻿using Abp.Application.Services;
 using Abp.Domain.Repositories;
+using Abp.EntityFrameworkCore.Repositories;
 using Boxfusion.LMS_Backend.Domain;
 using Boxfusion.LMS_Backend.Services.Dtos;
 using System;
@@ -17,7 +18,5 @@ namespace Boxfusion.LMS_Backend.Services
         {
             _repository = repository;
         }
-
-        // space for extensions
     }
 }

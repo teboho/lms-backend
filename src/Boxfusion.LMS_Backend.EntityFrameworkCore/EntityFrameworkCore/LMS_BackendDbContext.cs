@@ -13,7 +13,13 @@ namespace Boxfusion.LMS_Backend.EntityFrameworkCore
         public DbSet<Admin> Admins { get; set; }
         public DbSet<Assistant> Assistants { get; set; }
         public DbSet<Patron> Patrons { get; set; }
-        
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Book> Books { get; set; }
+        public DbSet<Loan> Loans { get; set; }
+        public DbSet<Payment> Payments { get; set; }
+        public DbSet<History> Histories { get; set; }
+        public DbSet<Preference> Preferences { get; set; }
+
         public LMS_BackendDbContext(DbContextOptions<LMS_BackendDbContext> options)
             : base(options)
         {

@@ -4,6 +4,7 @@ using Boxfusion.LMS_Backend.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Boxfusion.LMS_Backend.Migrations
 {
     [DbContext(typeof(LMS_BackendDbContext))]
-    partial class LMS_BackendDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240312131203_CreateBooks")]
+    partial class CreateBooks
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1660,58 +1663,6 @@ namespace Boxfusion.LMS_Backend.Migrations
                     b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("Boxfusion.LMS_Backend.Domain.History", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
-
-                    b.Property<long>("BookId")
-                        .HasColumnType("bigint");
-
-                    b.Property<DateTime>("DateRead")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid>("PatronId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BookId");
-
-                    b.HasIndex("PatronId");
-
-                    b.ToTable("Histories");
-                });
-
-            modelBuilder.Entity("Boxfusion.LMS_Backend.Domain.Loan", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
-
-                    b.Property<long>("BookId")
-                        .HasColumnType("bigint");
-
-                    b.Property<DateTime>("DateCreated")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid>("PatronId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BookId");
-
-                    b.HasIndex("PatronId");
-
-                    b.ToTable("Loans");
-                });
-
             modelBuilder.Entity("Boxfusion.LMS_Backend.Domain.Patron", b =>
                 {
                     b.Property<Guid>("Id")
@@ -1729,63 +1680,6 @@ namespace Boxfusion.LMS_Backend.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Patrons");
-                });
-
-            modelBuilder.Entity("Boxfusion.LMS_Backend.Domain.Payment", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
-
-                    b.Property<float>("Amount")
-                        .HasColumnType("real");
-
-                    b.Property<DateTime>("DateCreated")
-                        .HasColumnType("datetime2");
-
-                    b.Property<long>("LoanId")
-                        .HasColumnType("bigint");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("LoanId");
-
-                    b.ToTable("Payments");
-                });
-
-            modelBuilder.Entity("Boxfusion.LMS_Backend.Domain.Preference", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
-
-                    b.Property<Guid>("PatronId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<long>("PrimaryCategoryId")
-                        .HasColumnType("bigint");
-
-                    b.Property<long>("SecondaryCategoryId")
-                        .HasColumnType("bigint");
-
-                    b.Property<long>("TertiaryCategoryId")
-                        .HasColumnType("bigint");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("PatronId");
-
-                    b.HasIndex("PrimaryCategoryId");
-
-                    b.HasIndex("SecondaryCategoryId");
-
-                    b.HasIndex("TertiaryCategoryId");
-
-                    b.ToTable("Preferences");
                 });
 
             modelBuilder.Entity("Boxfusion.LMS_Backend.MultiTenancy.Tenant", b =>
@@ -2103,44 +1997,6 @@ namespace Boxfusion.LMS_Backend.Migrations
                     b.Navigation("CategoryModel");
                 });
 
-            modelBuilder.Entity("Boxfusion.LMS_Backend.Domain.History", b =>
-                {
-                    b.HasOne("Boxfusion.LMS_Backend.Domain.Book", "BookModel")
-                        .WithMany()
-                        .HasForeignKey("BookId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Boxfusion.LMS_Backend.Domain.Patron", "PatronModel")
-                        .WithMany()
-                        .HasForeignKey("PatronId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("BookModel");
-
-                    b.Navigation("PatronModel");
-                });
-
-            modelBuilder.Entity("Boxfusion.LMS_Backend.Domain.Loan", b =>
-                {
-                    b.HasOne("Boxfusion.LMS_Backend.Domain.Book", "BookModel")
-                        .WithMany()
-                        .HasForeignKey("BookId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Boxfusion.LMS_Backend.Domain.Patron", "PatronModel")
-                        .WithMany()
-                        .HasForeignKey("PatronId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("BookModel");
-
-                    b.Navigation("PatronModel");
-                });
-
             modelBuilder.Entity("Boxfusion.LMS_Backend.Domain.Patron", b =>
                 {
                     b.HasOne("Boxfusion.LMS_Backend.Authorization.Users.User", "UserModel")
@@ -2150,52 +2006,6 @@ namespace Boxfusion.LMS_Backend.Migrations
                         .IsRequired();
 
                     b.Navigation("UserModel");
-                });
-
-            modelBuilder.Entity("Boxfusion.LMS_Backend.Domain.Payment", b =>
-                {
-                    b.HasOne("Boxfusion.LMS_Backend.Domain.Loan", "LoanModel")
-                        .WithMany()
-                        .HasForeignKey("LoanId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("LoanModel");
-                });
-
-            modelBuilder.Entity("Boxfusion.LMS_Backend.Domain.Preference", b =>
-                {
-                    b.HasOne("Boxfusion.LMS_Backend.Domain.Patron", "PatronModel")
-                        .WithMany()
-                        .HasForeignKey("PatronId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Boxfusion.LMS_Backend.Domain.Category", "PrimaryCategory")
-                        .WithMany()
-                        .HasForeignKey("PrimaryCategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Boxfusion.LMS_Backend.Domain.Category", "SecondaryCategory")
-                        .WithMany()
-                        .HasForeignKey("SecondaryCategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Boxfusion.LMS_Backend.Domain.Category", "TertiaryCategory")
-                        .WithMany()
-                        .HasForeignKey("TertiaryCategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("PatronModel");
-
-                    b.Navigation("PrimaryCategory");
-
-                    b.Navigation("SecondaryCategory");
-
-                    b.Navigation("TertiaryCategory");
                 });
 
             modelBuilder.Entity("Boxfusion.LMS_Backend.MultiTenancy.Tenant", b =>
