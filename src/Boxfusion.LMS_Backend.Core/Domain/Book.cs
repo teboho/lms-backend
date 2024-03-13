@@ -17,5 +17,9 @@ namespace Boxfusion.LMS_Backend.Domain
         public long CategoryId { get; set; }
         [ForeignKey(nameof(CategoryId))]
         public Category CategoryModel { get; set; }
+
+        public Guid AuthorId { get; set; }
+        [ForeignKey(nameof(AuthorId))]
+        public Author AuthorModel { get; set; }
     }
 }

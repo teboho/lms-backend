@@ -19,6 +19,8 @@ namespace Boxfusion.LMS_Backend.EntityFrameworkCore
         public DbSet<Payment> Payments { get; set; }
         public DbSet<History> Histories { get; set; }
         public DbSet<Preference> Preferences { get; set; }
+        public DbSet<Author> Authors { get; set; }
+        public DbSet<Inventory> InventoryData { get; set; }
 
         public LMS_BackendDbContext(DbContextOptions<LMS_BackendDbContext> options)
             : base(options)
