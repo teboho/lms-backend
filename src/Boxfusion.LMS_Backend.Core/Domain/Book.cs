@@ -14,6 +14,7 @@ namespace Boxfusion.LMS_Backend.Domain
         public string Description {  get; set; }
         public byte Type { get; set; }
         public long Year { get; set; }
+        public string? ImageURL {  get; set; }
         public long CategoryId { get; set; }
         [ForeignKey(nameof(CategoryId))]
         public Category CategoryModel { get; set; }

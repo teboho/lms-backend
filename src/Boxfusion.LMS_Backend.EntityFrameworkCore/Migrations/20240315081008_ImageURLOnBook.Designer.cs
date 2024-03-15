@@ -4,6 +4,7 @@ using Boxfusion.LMS_Backend.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Boxfusion.LMS_Backend.Migrations
 {
     [DbContext(typeof(LMS_BackendDbContext))]
-    partial class LMS_BackendDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240315081008_ImageURLOnBook")]
+    partial class ImageURLOnBook
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
