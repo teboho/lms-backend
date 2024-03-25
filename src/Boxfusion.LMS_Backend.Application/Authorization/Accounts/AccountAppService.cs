@@ -35,6 +35,7 @@ namespace Boxfusion.LMS_Backend.Authorization.Accounts
             return new IsTenantAvailableOutput(TenantAvailabilityState.Available, tenant.Id);
         }
 
+
         public async Task<RegisterOutput> Register(RegisterInput input)
         {
             var user = await _userRegistrationManager.RegisterAsync(

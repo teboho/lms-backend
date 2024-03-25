@@ -12,7 +12,7 @@ namespace Boxfusion.LMS_Backend.Domain
     {
         public string Name { get; set; }
         public string Description {  get; set; }
-        public byte Type { get; set; }
+        public byte Type { get; set; } // 0 (physical) or 1 (ebook) or 3 (both)
         public long Year { get; set; }
         public string? ImageURL {  get; set; }
         public string ISBN { get; set; }
